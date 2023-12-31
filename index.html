@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Números</title>
+  <style>
+    
+  </style>
+</head>
+
+<body>
+  <div>
+    <button id="getAllNumbersBtn">Listar números</button>
+    <br />
+    <span class="title">Valores - Main(Production)</span>
+    <div class="values" id="valuesContainer"></div>
+    <form class="form" id="saveNumberForm">
+      <label>Insira um valor: </label>
+      <input id="valueInput" />
+      <button type="button" onclick="saveNumber()">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    const API_ENDPOINT = 'http://api.production.192.168.18.16.nip.io';
+
+    async function getAllNumbers() {
+      try {
+        const response = await fetch(`${API_ENDPOINT}/values/all`);
+        const data = await response.json();
+        const valuesContainer = document.getElementById('valuesContainer');
+        valuesContainer.innerHTML = data.map((row) => `<div class="value">${row.number}</div>`).join('');
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    async function saveNumber() {
+      try {
+        const value = document.getElementById('valueInput').value;
+        await fetch(`${API_ENDPOINT}/values`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ value }),
+        });
+        document.getElementById('valueInput').value = '';
+        getAllNumbers();
+      } catch (error) {
+        console.error('Error saving number:', error);
+      }
+    }
+
+    document.getElementById('getAllNumbersBtn').addEventListener('click', getAllNumbers);
+  </script>
+</body>
+
+</html>
