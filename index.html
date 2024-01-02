@@ -7,18 +7,76 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <title>Números</title>
   <style>
-    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    div {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .title {
+      display: block;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .value {
+      padding: 10px;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+      font-size: 18px;
+    }
+
+    .form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
   </style>
 </head>
 
 <body>
   <div>
-    <button id="getAllNumbersBtn">Listar números</button>
+    <button id="getAllNumbersBtn">Listar Números</button>
     <br />
-    <span class="title">Valores - Main(Production)V2</span>
+    <span class="title">Valores - Main (Production) V2</span>
     <div class="values" id="valuesContainer"></div>
     <form class="form" id="saveNumberForm">
-      <label>Insira um valor: </label>
+      <label for="valueInput">Insira um valor:</label>
       <input id="valueInput" />
       <button type="button" onclick="saveNumber()">Enviar</button>
     </form>
@@ -34,7 +92,7 @@
         const valuesContainer = document.getElementById('valuesContainer');
         valuesContainer.innerHTML = data.map((row) => `<div class="value">${row.number}</div>`).join('');
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Erro ao buscar dados:', error);
       }
     }
 
@@ -51,7 +109,7 @@
         document.getElementById('valueInput').value = '';
         getAllNumbers();
       } catch (error) {
-        console.error('Error saving number:', error);
+        console.error('Erro ao salvar número:', error);
       }
     }
 
