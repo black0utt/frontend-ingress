@@ -8,75 +8,80 @@
   <title>Números</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      padding: 20px;
-      background-color: #f4f4f4;
+      font-family: 'Courier New', monospace;
+      margin: 10px;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
     }
 
     div {
-      max-width: 600px;
+      max-width: 400px;
       margin: 0 auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #666;
+      padding: 10px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     }
 
     button {
-      padding: 10px 20px;
-      background-color: #4caf50;
+      padding: 15px 25px;
+      background-color: #222;
       color: #fff;
-      border: none;
-      border-radius: 4px;
+      border: 2px solid #fff;
+      border-radius: 10px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 20px;
     }
 
     .title {
       display: block;
-      font-size: 24px;
+      font-size: 28px;
       font-weight: bold;
-      margin: 20px 0;
+      margin: 30px 0;
+      color: #ffffff;
+      text-align: center;
     }
 
     .values {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px;
+      justify-content: center;
     }
 
     .value {
-      padding: 10px;
-      background-color: #e0e0e0;
-      border-radius: 4px;
-      font-size: 18px;
+      padding: 15px;
+      background-color: #444;
+      border-radius: 10px;
+      font-size: 24px;
     }
 
     .form {
-      margin-top: 20px;
+      margin-top: 30px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
     }
 
     input {
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 15px;
+      font-size: 20px;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      background-color: #222;
+      color: #fff;
     }
   </style>
 </head>
 
 <body>
   <div>
-    <button id="getAllNumbersBtn">Listar Números</button>
     <br />
-    <span class="title">Valores - Main (Production) V2</span>
+    <span class="title">Digite um número(PRODUCTION)</span>
     <div class="values" id="valuesContainer"></div>
     <form class="form" id="saveNumberForm">
-      <label for="valueInput">Insira um valor:</label>
+      <label for="valueInput"></label>
       <input id="valueInput" />
       <button type="button" onclick="saveNumber()">Enviar</button>
     </form>
